@@ -26,8 +26,7 @@ source-repository head
 library
   exposed-modules:
       Language.Lisp.IR.AST
-      Language.Lisp.Parsing.Lexer
-      Language.Lisp.Parsing.Parser
+      Language.Lisp.Parser
   other-modules:
       Paths_lisp_hs
   autogen-modules:
@@ -40,6 +39,7 @@ library
   build-depends:
       base >=4.7 && <5
     , containers
+    , megaparsec
     , mtl
     , optparse-applicative
     , text
@@ -59,6 +59,7 @@ executable lisp-hs-exe
       base >=4.7 && <5
     , containers
     , lisp-hs
+    , megaparsec
     , mtl
     , optparse-applicative
     , text
@@ -69,6 +70,10 @@ test-suite lisp-hs-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Test
+      Test.Language.Lisp.IR.AST
+      Test.Language.Lisp.Parser
+      Test.Utils
       Paths_lisp_hs
   autogen-modules:
       Paths_lisp_hs
@@ -79,6 +84,7 @@ test-suite lisp-hs-test
       base >=4.7 && <5
     , containers
     , lisp-hs
+    , megaparsec
     , mtl
     , optparse-applicative
     , text
